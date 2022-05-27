@@ -26,7 +26,7 @@ jobs:
       - name: Migrate database
         run: |
           npm install
-          npx sequelize-cli db:create
+          npx sequelize-cli migration:create --name initial
           npx sequelize-cli db:migrate
           
       - name: Lint code
