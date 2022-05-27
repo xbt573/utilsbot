@@ -1,0 +1,1 @@
+module.exports = ['wiki', 'json', 'wikilang', 'jsonvalid'];
