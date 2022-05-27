@@ -19,9 +19,16 @@ const wiki = async (ctx) => {
         }
     });
 
+    let lang;
+    if (req) {
+        lang = req.dataValues.lang;
+    } else {
+        lang = 'en';
+    }
+
     let article;
     try {
-        const response = await wikijs({ apiUrl: `https://${req.dataValues.lang || 'en'}.wikipedia.org/w/api.php` }).page(command.toLowerCase());
+        const response = await wikijs({ apiUrl: `https://${lang}.wikipedia.org/w/api.php` }).page(command.toLowerCase());
         const summary = await response.summary();
         article = summary.split('\n')[0] + '\n' + response.fullurl;
     } catch { article = ''; }
