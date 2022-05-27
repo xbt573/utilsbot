@@ -14,11 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Wikilang.init({
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true
+    chatId: {
+      type: DataTypes.BIGINT,
+      primaryKey: true,
     },
-    chatId: DataTypes.BIGINT,
     lang: DataTypes.STRING
   }, {
     sequelize,
