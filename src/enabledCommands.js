@@ -1,1 +1,1 @@
-module.exports = ['wiki', 'json', 'wikilang', 'jsonvalid'];
+module.exports = ['wiki', 'json', 'wikilang', 'jsonvalid', 'getrep'];
