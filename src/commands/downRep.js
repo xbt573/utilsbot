@@ -4,6 +4,7 @@ const description = 'Down reputation for user (admin only)';
 const downRep = async (ctx) => {
     if (!ctx.message.reply_to_message) { return; }
     if (ctx.chat.type == 'private' || ctx.chat.type == 'channel') { return; }
+    if (ctx.message.reply_to_message.from.id == ctx.from.id) { return; }
 
     const chatMember = await ctx.getChatMember(ctx.from.id);
 
