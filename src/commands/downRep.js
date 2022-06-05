@@ -11,8 +11,8 @@ const downRep = async (ctx) => {
     if (chatMember.status != 'creator' &&
         chatMember.status != 'administrator') {
 
-        ctx.replyWithMarkdown('*Only admins can change rep!*',
-            { reply_to_message_id: ctx.message.message_id });
+        // ctx.replyWithMarkdown('*Only admins can change rep!*',
+        //     { reply_to_message_id: ctx.message.message_id });
         return;
     }
 
@@ -27,7 +27,7 @@ const downRep = async (ctx) => {
     if (row == null) {
         row = await User.create({ id: ctx.message.reply_to_message.from.id, rep: -1 });
     } else {
-        if (row.rep > 0) {
+        if (row.rep >= 0) {
             row = await User.update({ rep: row.rep - 1 }, {
                 where: {
                     id: ctx.message.reply_to_message.from.id

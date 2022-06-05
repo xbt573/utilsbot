@@ -11,8 +11,8 @@ const upRep = async (ctx) => {
     if (chatMember.status != 'creator' &&
         chatMember.status != 'administrator') {
 
-        ctx.replyWithMarkdown('*Only admins can change rep!*',
-            { reply_to_message_id: ctx.message.message_id });
+        // ctx.replyWithMarkdown('*Only admins can change rep!*',
+        //     { reply_to_message_id: ctx.message.message_id });
         return;
     }
 
