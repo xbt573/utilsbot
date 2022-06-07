@@ -9,23 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.2.0
-        
+
       - name: Setup PostgreSQL
         uses: Harmon758/postgresql-action@v1.0.0
         with:
-          postgresql db: utilsbot-database
+          postgresql db: utilsbot
           postgresql user: postgres
           postgresql password: postgres
-          
+
+      - name: Setup packages
+        run: npm install
+
       - name: Migrate database
         run: |
-          npm install
           npx sequelize-cli init:migrations
           npx sequelize-mig migration:make -n migration
           npx sequelize-cli db:migrate
-          
+
       - name: Lint code
         run: npm run lint
