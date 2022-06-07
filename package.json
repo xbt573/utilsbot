@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "build": "sequelize init:migrations; sequelize-mig migration:make -n migration; sequelize db:migrate --env production",
-    "nodemon": "nodemon src/index.js",
+    "nodemon": "npx nodemon src/index.js",
     "lint": "eslint src/*",
     "lintfix": "eslint src/* --fix"
   },
