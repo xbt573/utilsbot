@@ -36,7 +36,7 @@ require('./enabledCommands').forEach((command) => {
 bot.hears('++', upRep);
 bot.hears('--', downRep);
 
-// bot.startWebhook('/messages', null, 8443);
+bot.startWebhook('/messages', null, 8443);
 bot.launch();
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
