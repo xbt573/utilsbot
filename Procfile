@@ -1,1 +1,1 @@
-bot: npm run heroku
+bot: npm run nodemon

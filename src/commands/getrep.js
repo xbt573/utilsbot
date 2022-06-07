@@ -14,11 +14,12 @@ const getRep = async (ctx) => {
     const User = ctx.models.User;
     const row = await User.findOne({
         where: {
-            id: target
+            userId: target,
+            chatId: ctx.chat.id,
         }
     });
 
-    ctx.replyWithMarkdown(`*${nickname}*: ${row?.rep || 0}`,
+    await ctx.replyWithMarkdown(`*${nickname}*: ${row?.rep || 0}`,
         { reply_to_message_id: ctx.message.message_id });
 };
 

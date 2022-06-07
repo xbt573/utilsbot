@@ -1,5 +1,5 @@
 const { Telegraf } = require('telegraf');
-const { Wikilang, User } = require('../models');
+const { Wikilang, User, RepUsage } = require('../models');
 
 const { help } = require('./commands/help');
 const { start } = require('./commands/start');
@@ -13,7 +13,8 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.use(async (ctx, next) => {
     ctx.models = {
         Wikilang: Wikilang,
-        User: User
+        User: User,
+        RepUsage: RepUsage
     };
     await next();
 });
@@ -32,10 +33,10 @@ require('./enabledCommands').forEach((command) => {
     console.log(`Enabled command ${command}`);
 });
 
-bot.hears('+', upRep);
-bot.hears('-', downRep);
+bot.hears('++', upRep);
+bot.hears('--', downRep);
 
-bot.startWebhook('/messages', null, 8443);
+// bot.startWebhook('/messages', null, 8443);
 bot.launch();
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
