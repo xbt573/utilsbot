@@ -1,6 +1,6 @@
 const { Telegraf } = require('telegraf');
 const { Wikilang, User, RepUsage } = require('../models');
-const PasteClient = require("pastebin-api").default;
+const PasteClient = require('pastebin-api').default;
 
 const { help } = require('./commands/help');
 const { start } = require('./commands/start');
