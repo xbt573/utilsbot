@@ -24,7 +24,7 @@ const command = async (ctx) => {
         await ctx.reply(base64,
             { reply_to_message_id: ctx.message.message_id });
     } catch {
-	await ctx.replyWithMarkdown('*Base64 string is incorrect!*');
+        await ctx.replyWithMarkdown('*Base64 string is incorrect!*');
     }
 };
 
