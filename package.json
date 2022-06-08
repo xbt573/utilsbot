@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "build": "sequelize init:migrations; sequelize-mig migration:make -n migration; sequelize db:migrate --env production",
     "nodemon": "npx nodemon src/index.js",
-    "pm2": "pm2 start index.js --no-daemon",
+    "pm2": "pm2 start src/index.js --no-daemon",
     "lint": "eslint src/*",
     "lintfix": "eslint src/* --fix"
   },
