@@ -1,1 +1,1 @@
-bot: npm run nodemon
+bot: npm run pm2
