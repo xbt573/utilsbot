@@ -19,9 +19,13 @@ const command = async (ctx) => {
         return;
     }
 
-    const base64 = decodeUnicode(command);
-    await ctx.reply(base64,
-        { reply_to_message_id: ctx.message.message_id });
+    try {
+        const base64 = decodeUnicode(command);
+        await ctx.reply(base64,
+            { reply_to_message_id: ctx.message.message_id });
+    } catch {
+        await ctx.replyWithMarkdown('*Base64 string is incorrect!*');
+    }
 };
 
 module.exports.usage = usage;
