@@ -20,6 +20,7 @@
     "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
+    "pastebin-api": "^5.0.0",
     "pg": "^8.7.3",
     "pm2": "^5.2.0",
     "sequelize": "^6.20.0",

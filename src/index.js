@@ -1,5 +1,6 @@
 const { Telegraf } = require('telegraf');
 const { Wikilang, User, RepUsage } = require('../models');
+const PasteClient = require('pastebin-api').default;
 
 const { help } = require('./commands/help');
 const { start } = require('./commands/start');
@@ -7,7 +8,10 @@ const { start } = require('./commands/start');
 const { upRep } = require('./commands/upRep');
 const { downRep } = require('./commands/downRep');
 
+const pastebin = new PasteClient(process.env.PASTEBIN_KEY);
 const bot = new Telegraf(process.env.BOT_TOKEN);
+
+const debug = process.env.DEBUG || false;
 
 // Middleware for providing ORM to commands
 bot.use(async (ctx, next) => {
@@ -35,6 +39,17 @@ require('./enabledCommands').forEach((command) => {
 
 bot.hears('++', upRep);
 bot.hears('--', downRep);
+
+bot.catch(async (err) => {
+    if (debug) {
+        const url = await pastebin.createPaste({
+            code: err,
+            publicity: 1
+        });
+
+        console.log(url);
+    }
+});
 
 bot.startWebhook('/messages', null, 8443);
 bot.launch();
