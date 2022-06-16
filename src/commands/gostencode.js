@@ -15,8 +15,8 @@ const gostencode = async (ctx) => {
 
     const buffer = Buffer.from(text);
     const digest = gostEngine.getGostDigest({ name: 'GOST R 34.11',
-                                              length: 256,
-                                              version: 2012 });
+        length: 256,
+        version: 2012 });
     const encoded = Buffer.from(digest.digest(buffer)).toString('hex');
 
     await ctx.reply(encoded,

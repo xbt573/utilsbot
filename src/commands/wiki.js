@@ -42,7 +42,7 @@ const wiki = async (ctx) => {
 
     await ctx.reply(article,
         { reply_to_message_id: ctx.message.message_id,
-          disable_web_page_preview: true });
+            disable_web_page_preview: true });
 };
 
 module.exports.command = wiki;
