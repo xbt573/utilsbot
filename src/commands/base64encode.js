@@ -3,12 +3,13 @@ const { splitCommand } = require('../utils');
 const usage = '/base64encode <text>';
 const description = 'Encodes text to base64';
 
-const command = async (ctx) => {
+const base64encode = async (ctx) => {
     function encodeUnicode(str) {
         return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
             function toSolidBytes(match, p1) {
                 return String.fromCharCode('0x' + p1);
-            }));
+            }
+        ));
     }
 
     const command = splitCommand(ctx.message.text);
@@ -26,4 +27,4 @@ const command = async (ctx) => {
 
 module.exports.usage = usage;
 module.exports.description = description;
-module.exports.command = command;
+module.exports.command = base64encode;

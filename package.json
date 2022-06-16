@@ -20,6 +20,7 @@
     "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
+    "node-gost-crypto": "^1.0.2",
     "pastebin-api": "^5.0.0",
     "pg": "^8.7.3",
     "pm2": "^5.2.0",

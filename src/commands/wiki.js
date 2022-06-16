@@ -8,7 +8,8 @@ const wiki = async (ctx) => {
     const command = splitCommand(ctx.message.text);
 
     if (command == '') {
-        ctx.replyWithMarkdown(`*Usage*: ${usage}`, { reply_to_message_id: ctx.message.message_id });
+        await ctx.replyWithMarkdown(`*Usage*: ${usage}`,
+            { reply_to_message_id: ctx.message.message_id });
         return;
     }
 
@@ -34,12 +35,14 @@ const wiki = async (ctx) => {
     } catch { article = ''; }
 
     if (article == '') {
-        ctx.replyWithMarkdown('*Article not found*.', { reply_to_message_id: ctx.message.message_id });
+        await ctx.replyWithMarkdown('*Article not found*.',
+            { reply_to_message_id: ctx.message.message_id });
         return;
     }
 
-    ctx.reply(article, { reply_to_message_id: ctx.message.message_id,
-        disable_web_page_preview: true });
+    await ctx.reply(article,
+        { reply_to_message_id: ctx.message.message_id,
+          disable_web_page_preview: true });
 };
 
 module.exports.command = wiki;
