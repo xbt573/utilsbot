@@ -2,7 +2,7 @@
 const usage = '/help';
 const description = 'Show all commands';
 
-const help = (ctx) => {
+const help = async (ctx) => {
     const commands = require('../enabledCommands');
 
     let helpString = '*/help* - _Show all commands_\n*/start* - _Starts bot_\n';
@@ -16,7 +16,8 @@ const help = (ctx) => {
         helpString += `*${usage}* - _${description}_\n`;
     });
 
-    ctx.replyWithMarkdown(helpString, { reply_to_message_id: ctx.message.message_id });
+    await ctx.replyWithMarkdown(helpString,
+        { reply_to_message_id: ctx.message.message_id });
 };
 
 module.exports.help = help;

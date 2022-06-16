@@ -9,7 +9,8 @@ const wikilang = async (ctx) => {
     const command = splitCommand(ctx.message.text);
 
     if (command == '' || command != 'en' && command != 'ru') {
-        ctx.replyWithMarkdown(`*Usage:* ${usage}`, { reply_to_message_id: ctx.message.message_id });
+        await ctx.replyWithMarkdown(`*Usage:* ${usage}`,
+            { reply_to_message_id: ctx.message.message_id });
         return;
     }
 
@@ -19,7 +20,7 @@ const wikilang = async (ctx) => {
 		chatMember.status != 'creator' &&
 		chatMember.status != 'administrator') {
 
-        ctx.replyWithMarkdown('*Only admins can change language!*',
+        await ctx.replyWithMarkdown('*Only admins can change language!*',
             { reply_to_message_id: ctx.message.message_id });
         return;
     }
@@ -40,7 +41,8 @@ const wikilang = async (ctx) => {
         });
     }
 
-    ctx.replyWithMarkdown('*Success!*', { reply_to_message_id: ctx.message.message_id });
+    await ctx.replyWithMarkdown('*Success!*',
+        { reply_to_message_id: ctx.message.message_id });
 };
 
 module.exports.command = wikilang;
