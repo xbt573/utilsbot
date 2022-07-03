@@ -2,7 +2,7 @@ const usage = '/debug';
 const description = 'Shows message';
 
 const debug = async (ctx) => {
-    await ctx.replyWithMarkdown('```\n' + ctx.message + '\n```');
+    await ctx.replyWithMarkdown('```\n' + JSON.stringify(ctx.message, null, 4) + '\n```');
 };
 
 module.exports.command = debug;
